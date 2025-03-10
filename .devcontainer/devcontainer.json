@@ -1,0 +1,29 @@
+{
+    "name": "PlanEdgy",
+    "dockerComposeFile": "./docker-compose.devcontainer.yml",
+    "service": "server",
+    "remoteEnv": {
+        "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+    },
+    "workspaceFolder": "/workspaces/PlanEdgy",
+    "forwardPorts": [3000],
+    "overrideCommand": false,
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "ms-azuretools.vscode-docker",
+                "MS-CEINTL.vscode-language-pack-ja",
+                "oderwat.indent-rainbow",
+                "bradlc.vscode-tailwindcss",
+                "esbenp.prettier-vscode",
+                "dbaeumer.vscode-eslint",
+                "mosapride.zenkaku",
+                "formulahendry.auto-rename-tag",
+                "streetsidesoftware.code-spell-checker",
+                "GitHub.copilot",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    }
+}

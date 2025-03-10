@@ -1,0 +1,31 @@
+FROM node:22-alpine
+
+WORKDIR /workspaces
+
+RUN apk add --no-cache --update \
+    curl \
+    git \
+    fish \
+    vim \
+    shadow \
+    bat \
+    docker \
+    docker-compose \
+    && rm -rf /var/cache/apk/*
+
+RUN /usr/bin/fish | tee -a /etc/shells
+RUN chsh -s /usr/bin/fish
+SHELL ["/usr/bin/fish", "-c"]
+
+RUN curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+RUN fisher install oh-my-fish/plugin-peco PatrickF1/fzf.fish jorgebucaran/autopair.fish
+
+RUN curl -fsSL https://starship.rs/install.sh | sh -s -- -y
+RUN curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh
+
+COPY .devcontainer/seeds/.config/fish/config.fish /root/.config/fish/config.fish
+COPY .devcontainer/seeds/.config/starship.toml /root/.config/starship.toml
+
+ENV STARSHIP_CONFIG=~/.config/starship.toml
+
+CMD tail -f /dev/null
