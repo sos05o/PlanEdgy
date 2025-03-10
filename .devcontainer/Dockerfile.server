@@ -11,6 +11,7 @@ RUN apk add --no-cache --update \
     bat \
     docker \
     docker-compose \
+    git-flow \
     && rm -rf /var/cache/apk/*
 
 RUN /usr/bin/fish | tee -a /etc/shells
